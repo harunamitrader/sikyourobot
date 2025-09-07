@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 import re
 
 #ファイルアドレス
-imagefilepath = r"C:\Users\harunami\Desktop\python_study\originalcalendar.png"
+imagefilepath = r"[任意のディレクトリ]\originalcalendar.png"
 
 #設定-----------------------------------------------------
 driver = webdriver.Chrome()
@@ -245,12 +245,7 @@ imcrop.save(imagefilepath)
 
 #WEBHOOK
 #hana塾サーバー
-WEBHOOK_URL = "https://discord.com/api/webhooks/1412952583030444064/f_6CPlPODN-2gPqMEkioYgAWraxxE0_kDV49owkeWoiWQmqxkMtvFIGnAOwK_NRV8uJ1?wait=true"
-#hana塾サーバー(指標部屋)
-#WEBHOOK_URL2 = "https://discord.com/api/webhooks/1339135865829457952/zTJEkbXassYmgLpNTQ7_9TwoI9IYEC-HpFDfQ9opi_Sl-zdWEnji0TB2xmZXSu-DYFij?wait=true"
-#テストサーバー
-#WEBHOOK_URL = "https://discordapp.com/api/webhooks/1303499824108273745/jpQdcsHz0UtnPbyhOcYYuIXDrPbdL9E_ggvgCL2WDKEaJkG6PDJjSqFdoAjsvF7hn5eW?wait=true"
-
+WEBHOOK_URL = "[WEBHOOKのURL]?wait=true"
 ### メッセージ
 payload = {
 	"content"		: "本日の主な予定" ,

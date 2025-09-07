@@ -1,6 +1,6 @@
 # 市況ロボット (Sikyou Robot)
 
-このリポジトリは、金融市場の情報を自動的に収集し、共有するためのPythonスクリプト群です。
+このリポジトリは、金融市場の情報を自動的に収集し、Discordに投稿するためのPythonスクリプト群です。
 
 ## スクリプト一覧
 
@@ -14,25 +14,26 @@
 
 生成される画像 (`originalcalendar.png`) には、当日から翌日にかけての主要な予定が時系列で記載されます。
 
-#### 依存ライブラリ
-- `selenium`
-- `pandas`
-- `requests`
-- `Pillow`
 
----
-
-### 2. `screenshot_heatmap.py`
+### 2. `pyscreenshot_discord.py`
 
 #### 機能
-このスクリプトは、Finvizのウェブサイトから以下の2種類のヒートマップのスクリーンショットを取得し、Discordに投稿します。
-- S&P 500 セクターヒートマップ
-- ETFヒートマップ
+このスクリプトは、以下の市場サマリーのスクリーンショットを取得し、それぞれDiscordに投稿します。
 
-取得したスクリーンショットは、ヒートマップ部分のみが切り抜かれ、タイムスタンプが追加されます。
+1.  **Fear & Greed Index (CNN)**
+    - CNN MoneyのFear & Greed指数のページからスクリーンショットを取得し、インジケーター部分を切り抜いて投稿します。
 
-#### 依存ライブラリ
+2.  **S&P 500セクターヒートマップ (Finviz)**
+    - FinvizのS&P 500セクターヒートマップのスクリーンショットを取得し、投稿します。
+
+3.  **ETFヒートマップ (Finviz)**
+    - FinvizのETFヒートマップのスクリーンショットを取得し、投稿します。
+
+取得した各画像には、タイムスタンプが付与されます。
+
+## 依存ライブラリ
 - `selenium`
+- `pandas` (originalcalendar.pyのみ)
 - `requests`
 - `Pillow`
 
@@ -52,10 +53,9 @@ pip install selenium pandas requests pillow
 ### 設定
 各スクリプト内の以下の項目を、ご自身の環境に合わせて変更する必要があります。
 
-- **ChromeDriverのパス**: `webdriver.Chrome()` の引数に、ダウンロードしたChromeDriverのパスを指定してください。
-- **ファイル保存パス**: 画像を保存するパス (`imagefilepath`など) を変更してください。
-- **フォントパス**: `ImageFont.truetype()` で指定されているフォントのパスを、ご自身の環境に合わせて変更してください。
+- **ファイル保存パス**: 画像を保存するパス (`imagefilepath`など) を、任意のディレクトリに変更してください。
 - **Discord Webhook URL**: `WEBHOOK_URL` に、投稿したいDiscordチャンネルのWebhook URLを設定してください。
+- **フォントパス**: `ImageFont.truetype()` で指定されているフォントのパスを、ご自身の環境に合わせて変更してください。(存在しない場合、エラーになります)
 
 ## 使い方
 各スクリプトを直接実行します。
@@ -63,6 +63,6 @@ pip install selenium pandas requests pillow
 # 経済・決算カレンダーを生成して投稿
 python originalcalendar.py
 
-# ヒートマップのスクリーンショットを取得して投稿
-python screenshot_heatmap.py
+# 各種市場サマリーのスクリーンショットを取得して投稿
+python pyscreenshot_discord.py
 ```
