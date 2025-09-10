@@ -66,3 +66,14 @@ python originalcalendar.py
 # 各種市場サマリーのスクリーンショットを取得して投稿
 python pyscreenshot_discord.py
 ```
+
+### 3. `pyheatmap_day_nasdaq100.py`
+
+#### 機能
+このスクリプトは、`nasdaq100list.txt` に記載されたNASDAQ 100の構成銘柄の株価データを取得し、各銘柄の前日比騰落率と指数への寄与度を可視化したヒートマップ画像 (`heatmap_day_nasdaq100.png`) を生成します。
+
+生成されたヒートマップは、セクターごとにグループ化されており、指数全体、および寄与度の高かった上位・下位銘柄の情報も表示されます。最終的に、この画像は指定されたDiscordのWebhookに投稿されます。
+
+#### 関連ファイル
+- `nasdaq100list.txt`
+  - ヒートマップを生成するための、NASDAQ 100構成銘柄のティッカーシンボルが記載されたテキストファイルです。
